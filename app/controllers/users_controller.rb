@@ -27,9 +27,11 @@ class UsersController <  ApplicationController
 #looks to match that info against the existing entries in the user db
 # and, if a matching entry is found, signs the user in.
   post '/login' do
-    #find the user by username (the one that just signed up)
+    # does this user exist in the db?
     user = User.find_by(:name => params["name"]) #in name column, return params key name's value
-    if user
+
+    if user && user.authenticate(params["password"]) #if pswd matches && if user exits in db
+      session[:user_id] = user.id # set session to this user
       erb :'tabs/index'
     else
       erb :welcome
