@@ -4,7 +4,7 @@ class UsersController <  ApplicationController
   # renders form to create new user
   get '/signup' do
     if logged_in?
-      #redirect '/index'
+      redirect '/tabs'
       erb :'tabs/index'
       # review ^^
       # change to index route so i have a change to validate user
@@ -29,7 +29,8 @@ class UsersController <  ApplicationController
 
       if user.save  # if user clicks submit
         session[:user_id] = user.id # log the user in
-        erb :'tabs/index'
+        redirect "/tabs"
+        # erb :'tabs/index'
         # change to index route so i have a change to validate user
       else
         redirect "/signup" # aka refresh the page
@@ -42,7 +43,7 @@ class UsersController <  ApplicationController
   #-------------login----------------#
   get '/login' do
     if logged_in?
-      erb :'tabs/index' #login view
+      redirect '/tabs' #login view
       # change to index route so i have a change to validate user
     else
       erb :'users/login'
@@ -58,7 +59,7 @@ class UsersController <  ApplicationController
 
     if user && user.authenticate(params["password"]) #if pswd matches && if user exits in db
       session[:user_id] = user.id # set session to this user
-      erb :'tabs/index' # change to index route so i have a change to validate user
+      redirect "/tabs" # change to index route so i have a change to validate user
     else
       puts "Wrong login info"
       redirect '/login' # refresh page
@@ -72,6 +73,8 @@ get '/logout' do
     redirect '/'
   end
 end
+
+
 
 #-------------show????----------------#
 # get '/show/:id' do
