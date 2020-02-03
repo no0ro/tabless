@@ -1,12 +1,15 @@
 <h2>Lets Get Tabless!</h2>
-<h3>Enter your associated email and password below:</h3>
+<h3>Enter your username and password below:</h3>
 <br></br>
-<form action="/login" method="post">
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email">
+<form action="/login" method="POST">
+
+  <label for="name">Username:</label>
+  <input type="text" name="name" id="name">
   <br></br>
-  <label for="pswd">Password:</label>
-  <input type="password" name="pswd" id="pswd">
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password">
   <br></br>
-  <button type="button" value="login">Login</button>
+
+  <input type="submit" value="Submit">
 </form>
