@@ -7,6 +7,7 @@ class UsersController <  ApplicationController
       #redirect '/index'
       erb :'tabs/index'
       # review ^^
+      # change to index route so i have a change to validate user
     else
       erb :'users/signup'
     end
@@ -29,6 +30,7 @@ class UsersController <  ApplicationController
       if user.save  # if user clicks submit
         session[:user_id] = user.id # log the user in
         erb :'tabs/index'
+        # change to index route so i have a change to validate user
       else
         redirect "/signup" # aka refresh the page
       end
@@ -39,7 +41,12 @@ class UsersController <  ApplicationController
 
   #-------------login----------------#
   get '/login' do
-    erb :'users/login' #login view
+    if logged_in?
+      erb :'tabs/index' #login view
+      # change to index route so i have a change to validate user
+    else
+      erb :'users/login'
+    end
   end
 
 #grabs the user's info from the params hash,
@@ -51,23 +58,25 @@ class UsersController <  ApplicationController
 
     if user && user.authenticate(params["password"]) #if pswd matches && if user exits in db
       session[:user_id] = user.id # set session to this user
-      erb :'tabs/index'
+      erb :'tabs/index' # change to index route so i have a change to validate user
     else
-      erb :welcome
+      puts "Wrong login info"
+      redirect '/login' # refresh page
     end
   end
 
-  #-------------show????----------------#
+#-------------logout----------------#
+get '/logout' do
+  if logged_in?
+    session.clear
+    redirect '/'
+  end
+end
+
+#-------------show????----------------#
 # get '/show/:id' do
 #   erb :'tabs/show'
 # end
-
-#-------------logout----------------#
-get '/logout' do
-  session.clear
-  redirect '/'
-end
-
 
 
 end
