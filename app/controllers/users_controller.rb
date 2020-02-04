@@ -40,8 +40,8 @@ class UsersController <  ApplicationController
   #-------------login----------------#
   get '/login' do
     if logged_in?
-      redirect '/tabs' #login view
-      # change to index route so i have a change to validate user
+      redirect_to_homepage
+      # change to index route so i have a chance to validate user
     else
       erb :'users/login'
     end
@@ -56,7 +56,7 @@ class UsersController <  ApplicationController
 
     if user && user.authenticate(params["password"]) #if pswd matches && if user exits in db
       session[:user_id] = user.id # set session to this user
-      redirect "/tabs" # change to index route so i have a change to validate user
+      redirect_to_homepage # change to index route so i have a change to validate user
     else
       puts "Wrong login info"
       redirect '/login' # refresh page
