@@ -3,38 +3,33 @@ class UsersController <  ApplicationController
 #-------------signup----------------#
   # renders form to create new user
   get '/signup' do
-    if logged_in?
+    if logged_in? #if there is an active session matching user.id && session_id
       redirect '/tabs'
-      erb :'tabs/index'
-      # review ^^
-      # change to index route so i have a change to validate user
     else
       erb :'users/signup'
     end
   end
 
-#gets the new user's info from the params hash, creates a new user,
-#signs them in, and then redirects them to login
+#gets the new user's info from the params hash, creates a new user,signs them in, and then redirects them to login
   post '/signup' do
-    # if username is already taken
-        # tell user to choose another name
-        # redirect "/signup" # aka refresh the page
+    # [TO DO] if username is already taken > tell user to choose another name > redirect "/signup" # aka refresh the page
     if User.find_by(:name => params["name"])
       puts "Choose another name, that one is taken."
       redirect "/signup" # aka refresh the page
 
-    else
-      # create a new user with the user input
+    else # create a new user with the user input
       user = User.new(:name => params["name"], :email => params["email"], :password => params["password"])
 
       if user.save  # if user clicks submit
         session[:user_id] = user.id # log the user in
+        user.save
         redirect "/tabs"
-        # erb :'tabs/index'
-        # change to index route so i have a change to validate user
+        # redirect to "/login??" post
+        # ?? add user.save here??
       else
         redirect "/signup" # aka refresh the page
       end
+
     end
   end
 
