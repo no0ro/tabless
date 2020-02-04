@@ -7,9 +7,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :sessions_secret, "password_security"
+    #3ENV["SESSION_SECRET"]
+
   end
 
-  # renders links to signup or login
+  # renders links to signup/login
   get "/" do
     erb :index
   end
@@ -17,13 +19,17 @@ class ApplicationController < Sinatra::Base
   helpers do
     # checks if user is logged in
     def logged_in?
-      if session[:user_id] != nil
-      end 
+      session[:user_id] != nil
     end
 
     # keeps track of the user currently logged in
     def current_user
-      User.find(session[:user_id])
+      User.find(params["id"])
+      #User.find(session[:user_id])
+    end
+
+    def redirect_to_homepage
+      redirect to "/tabs"
     end
   end
 

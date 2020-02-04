@@ -13,27 +13,29 @@ class UsersController <  ApplicationController
 #gets the new user's info from the params hash, creates a new user,signs them in, and then redirects them to login
   post '/signup' do
     # [TO DO] if username is already taken > tell user to choose another name > redirect "/signup" # aka refresh the page
-    if User.find_by(:name => params["name"])
+    if User.find_by(:name => params["name"]) #look in db and check if name already exists
       puts "Choose another name, that one is taken."
-      redirect "/signup" # aka refresh the page
+      redirect to "/signup" # aka refresh the page
+      #^^ "to" necessary? google.
 
     else # create a new user with the user input
-      user = User.new(:name => params["name"], :email => params["email"], :password => params["password"])
+      user = User.create(:name => params["name"], :email => params["email"], :password => params["password"])
 
-      if user.save  # if user clicks submit
-        session[:user_id] = user.id # log the user in
-        user.save
-        redirect "/tabs"
-        # redirect to "/login??" post
-        # ?? add user.save here??
-      else
-        redirect "/signup" # aka refresh the page
-      end
+      #if @user.save  # if user clicks submit
+        # puts user.id  #22 #testing
+        # puts session #<Rack::Session::... #testing
+        # puts session[:user_id] #empty at this point #testing
 
+      session[:user_id] = user.id # log the user in. set the users ID to equal the session ID
+        # puts session[:user_id]  #22 ...success set session! #testing
+        # @current_session = session[:user_id] #testing if saved
+        # binding.pry
+      redirect_to_homepage #aka /tabs
+      #else
+        #redirect "/signup" # aka refresh the page
+      #end
     end
   end
-
-
 
   #-------------login----------------#
   get '/login' do
@@ -71,7 +73,7 @@ end
 
 
 
-#-------------show????----------------#
+#-----------------------------#
 # get '/show/:id' do
 #   erb :'tabs/show'
 # end
