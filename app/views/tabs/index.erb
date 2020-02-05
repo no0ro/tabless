@@ -1,2 +1,19 @@
-hey! all the things!
-<%= @tabs%>
+<h1>ALL TABS</h1>
+<h1>Welcome, <%=@user.name%>  ALL TABS</h1>
+<h4></h4>
+<br><br>
+<img src="/public/images/iDidMyBest.jpg" alt="picture"/>
+
+<% @tabs.each do |tab| %>
+  <h3><%=tab.name%></h3>
+  <h5><%=tab.notes%></h5>
+  <%url = tab.url%>
+  <p><a href=<%=url%> target="_blank"> <%=url%> </a></p>
+  <br>
+<% end %>
+
+<a href="/tabs/new">Add a Tab</a>
+
+<footer>
+  <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>
+</footer>
