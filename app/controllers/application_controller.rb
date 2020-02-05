@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :sessions_secret, "password_security"
+    set :session_secret, "password_security"
     #3ENV["SESSION_SECRET"]
 
   end
@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
 
     # keeps track of the user currently logged in
     def current_user
-      User.find(params["id"])
+      User.find(session[:user_id])
       #User.find(session[:user_id])
     end
 
