@@ -1,17 +1,19 @@
-<h1>ALL TABS</h1>
-<h1>Welcome, <%=@user.name%>  ALL TABS</h1>
-<h4></h4>
-<br><br>
-<img src="/public/images/iDidMyBest.jpg" alt="picture"/>
+<h1>Welcome, <%=@user.name%> ALL TABS</h1>
 
+<ul>
 <% @tabs.each do |tab| %>
-  <h3><%=tab.name%></h3>
-  <h5><%=tab.notes%></h5>
-  <%url = tab.url%>
-  <p><a href=<%=url%> target="_blank"> <%=url%> </a></p>
+  <a href="/tabs/<%=tab.id%>" style="text-decoration:none">
+    <h3><li><%=tab.name%></li></h3></a>
+    <h5><li><%=tab.notes%></li></h5>
+    <p class="website_url"><li><%=tab.url%></li></p>
+
+  <%# <%url = tab.url%>
+  <!-- <p><li><a href=<%=url%> target="_blank"> <%=url%></a></li></p> -->
   <br>
 <% end %>
+</ul>
 
+<br>
 <a href="/tabs/new">Add a Tab</a>
 
 <footer>

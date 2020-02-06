@@ -1,0 +1,26 @@
+<form action="/tabs/<%@tab.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+  <label for="tab_name">Name:</label>
+  <input type="text" id="tab_name" name="tab_name" value="<%=@tab.name%>">
+  <br></br>
+
+  <label for="url">URL:</label>
+  <input type="text" name="url" id="url" value="<%=@tab.url%>">
+  <br></br>
+
+  <label for="notes">Notes:</label>
+  <input type="text" name="notes" id="notes" value="<%=@tab.notes%>">
+  <br></br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<form action="/tabs/<%=@tab.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
+
+<footer>
+  <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>
+</footer>
