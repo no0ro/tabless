@@ -1,12 +1,12 @@
-<h3><%=@tab.name%></h3>
-<h5><%=@tab.notes%></h5>
-<h2><%=@tab.url%></h2>
+<h3> <%=@tab.name%> </h3>
+<h5> <%=@tab.notes%> </h5>
+<h2> <%=@tab.url%> </h2>
 
 
-<a href="/tabs/<%=@tab.id%>/edit">Edit This Tab</a>
+<a href='/tabs/ <%= @tab.id %> /edit' > Edit This Tab </a>
 <br></br>
 
-<form action="/tabs/<%=@tab.id%>" method="post">
+<form action='/tabs/ <%=@tab.id%>' method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
