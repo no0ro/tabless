@@ -1,4 +1,6 @@
 <h5>Edit <%=@tab.name%>: </h5>
+
+<!-- Edit  -> Form -->
 <br></br>
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
@@ -19,12 +21,13 @@
 </form>
 
 
-
+<!-- Delete -> Form/Button -->
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
 
+<!-- Footer -->
 <footer>
   <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>
 </footer>

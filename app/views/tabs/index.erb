@@ -1,5 +1,6 @@
 <h1>Welcome, <%=@user.name%> ALL TABS</h1>
 
+<!-- Display ALL Tabs & Deets -->
 <ul>
 <% @tabs.each do |tab| %>
   <a href="/tabs/<%=tab.id%>" style="text-decoration:none">
@@ -13,9 +14,11 @@
 <% end %>
 </ul>
 
+<!-- Create a New tab -> Route -->
 <br>
 <a href="/tabs/new">Add a Tab</a>
 
+<!-- Footer -->
 <footer>
   <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>
 </footer>
