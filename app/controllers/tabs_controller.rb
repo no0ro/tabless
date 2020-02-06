@@ -67,8 +67,22 @@ class TabsController <  ApplicationController
   end
 
   #update
+  patch '/tabs/:id' do
+
+    @tab = Tab.find_by_id(params[:id])
+    if @tab.user == current_user
+      @tab.update(:name => params["name"], :url => params["url"], :notes => params["notes"])
+      @tab.save
+      redirect "/tabs/#{@tab.id}"
+    else
+      redirect "/"
+    end
+
+  end
 
   #delete
+  delete '/tabs/:id' do
 
+  end
 
 end
