@@ -1,8 +1,10 @@
-<form action="/tabs/<%@tab.id%>" method="POST">
+<h5>Edit <%=@tab.name%>: </h5>
+<br></br>
+<form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
 
   <label for="tab_name">Name:</label>
-  <input type="text" id="tab_name" name="tab_name" value="<%=@tab.name%>">
+  <input type="text" id="tab_name" name="name" value="<%=@tab.name%>">
   <br></br>
 
   <label for="url">URL:</label>
@@ -12,9 +14,11 @@
   <label for="notes">Notes:</label>
   <input type="text" name="notes" id="notes" value="<%=@tab.notes%>">
   <br></br>
-
-  <input type="submit" value="Submit">
+  <!-- <input type="submit" value="Submit"> -->
+  <button type="submit" name="edit_button">Save Changed</button>
 </form>
+
+
 
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
