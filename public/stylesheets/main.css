@@ -18,12 +18,7 @@
   }
 
   /* --- Welcome Page Styles --- */
-  body {
-    background-color: #fff;
-    color: #fff;
-    font-family: Sans-Serif;
-    line-height: 18px;
-  }
+
 
   .wrapper {
       background: #a6a6d8;
@@ -65,12 +60,16 @@
     margin-bottom: 0px;
   } */
 
-  a {
+
+  p.website_url {
     color: rgb(230, 230, 255);
     line-height: 10px;
     font-family: monospace;
   }
 
+  a {
+    color: #162340
+  }
   a:hover {
     color: rgb(230, 230, 255)
   }
