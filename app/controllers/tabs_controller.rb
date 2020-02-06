@@ -41,7 +41,8 @@ class TabsController <  ApplicationController
   get '/tabs/:id' do
     if logged_in?
         #binding.pry
-        @tab = Tab.find_by_id(params[:id])
+        # @tab = Tab.find_by_id(params[:id])
+        @tab = current_tab
         if @tab.user == current_user #make sure pulling up only this user's saved tab. not someone elses saved tab
           erb :'tabs/show'
         else
@@ -55,7 +56,7 @@ class TabsController <  ApplicationController
   #edit
   get '/tabs/:id/edit' do
     if logged_in?
-      @tab = Tab.find_by_id(params[:id])
+      @tab = current_tab
       if @tab.user == current_user #make sure pulling up only this user's saved tab. not someone elses saved tab
         erb :'tabs/edit'
       else
@@ -69,7 +70,8 @@ class TabsController <  ApplicationController
   #update
   patch '/tabs/:id' do
 
-    @tab = Tab.find_by_id(params[:id])
+    # @tab = Tab.find_by_id(params[:id])
+    @tab = current_tab
     if @tab.user == current_user
       @tab.update(:name => params["name"], :url => params["url"], :notes => params["notes"])
       @tab.save
@@ -82,7 +84,12 @@ class TabsController <  ApplicationController
 
   #delete
   delete '/tabs/:id' do
-
+    # @tab = Tab.find_by_id(params[:id])
+    @tab = current_tab 
+    if @tab.user == current_user
+      @tab.delete
+      redirect_to_homepage
+    end
   end
 
 end

@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
       #User.find(session[:user_id])
     end
 
+    def current_tab
+      Tab.find_by_id(params[:id])
+    end
+
     def redirect_to_homepage
       redirect to "/tabs"
     end
