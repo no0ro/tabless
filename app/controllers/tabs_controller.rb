@@ -2,7 +2,6 @@ class TabsController <  ApplicationController
 
   # all tabs
   get '/tabs' do
-    #binding.pry
     if logged_in?
       @user = current_user
       @tabs = current_user.tabs

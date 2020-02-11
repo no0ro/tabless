@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     # checks if user is logged in
+    # if there is an active session matching user.id && session_id
     def logged_in?
       session[:user_id] != nil
     end
