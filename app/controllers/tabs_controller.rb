@@ -1,6 +1,6 @@
 class TabsController <  ApplicationController
 
-  # all tabs
+  # index - all tabs
   get '/tabs' do
     if logged_in?
       @user = current_user
@@ -37,55 +37,64 @@ class TabsController <  ApplicationController
     end
   end
 
-  # show
+  # show - display the tab
   get '/tabs/:id' do
     if logged_in?
+        # retrieve specified tab from db via id #
         @tab = Tab.find_by_id(params[:id])
-        #@tab = current_tab
-        if @tab.user == current_user #make sure pulling up only this user's saved tab. not someone elses saved tab
-          erb :'/tabs/show'
+
+        # validate that ^^ found tab, actually belongs to this user
+        if @tab.user == current_user
+          erb :'/tabs/show' # display the tab
         else
           redirect_to_homepage
         end
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
-  #edit
+  # edit - render tabs edit form
   get '/tabs/:id/edit' do
     if logged_in?
       @tab = Tab.find_by_id(params[:id])
-      if @tab.user == current_user # make sure pulling up only this user's saved tab. not someone elses saved tab
+
+      # make sure pulling up only this user's saved tab. not someone elses saved tab
+      if @tab.user == current_user
         erb :'tabs/edit'
       else
-        redirect to '/login'
+        redirect_to_homepage
       end
     else
-      redirect_to_homepage
+      redirect to '/'
     end
   end
 
-  #update
+  # update - update only a specified part
   patch '/tabs/:id' do
+    tab = Tab.find_by_id(params[:id])
 
-    @tab = Tab.find_by_id(params[:id])
-    if @tab.user == current_user
-      @tab.update(:name => params["name"], :url => params["url"], :notes => params["notes"])
-      @tab.save
-      redirect "/tabs/#{@tab.id}"
+    if tab.user == current_user # validate this @tab belongs to this user
+
+      tab.update(:name => params["name"], :url => params["url"], :notes => params["notes"])
+      tab.save
+      redirect "/tabs/#{tab.id}"
     else
       redirect "/"
     end
 
   end
 
-  #delete
+  # delete
   delete '/tabs/:id' do
-    @tab = Tab.find_by_id(params[:id])
-    if @tab.user == current_user
-      @tab.delete
-      redirect_to_homepage
+    if logged_in?
+      @tab = Tab.find_by_id(params[:id])
+      if @tab.user == current_user # validate this @tab belongs to this user
+        @tab.delete
+        redirect_to_homepage
+      end
+    else
+      redirect to '/'
     end
   end
 
