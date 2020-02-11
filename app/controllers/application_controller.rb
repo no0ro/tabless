@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
   end
 
-  # renders links to signup/login
+  # renders routes to signup & login pages
   get "/" do
     erb :index
   end
@@ -26,18 +26,11 @@ class ApplicationController < Sinatra::Base
     # keeps track of the user currently logged in
     def current_user
       User.find(session[:user_id])
-      #User.find(session[:user_id])
     end
-
-    # def current_tab
-    #   Tab.find_by_id(params[:id])
-    # end
 
     def redirect_to_homepage
       redirect to "/tabs"
     end
-
-
   end
 
 end

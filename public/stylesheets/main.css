@@ -1,5 +1,4 @@
 @media screen {
-  /* --- Reset Styles --- */
   * {
     list-style: none;
     margin: 0;
@@ -11,45 +10,34 @@
     width: 100%;
   }
 
-  /* --- Welcome Page Styles --- */
   .wrapper {
       background: white;
-      /* -moz-box-shadow: 0 0 10px rgba(0,0,0,.3); */
-      /* -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); */
-      /* box-shadow: 0 0 10px rgba(0,0,0,.3); */
       margin: 10px 10px 1px 1px;
       max-width: 960px;
-      padding: 2.25%; /* 18px / 800px */
+      padding: 2.25%;
       width: 85%;
     }
 
-
-
-
-/*title  large*/
+/* Biggest - title */
   h1 {
     font-size: 45px;
     line-height: 36px;
     color: #1a0033; /*black purple*/
     font-family: arial black, bold;
-    /* border: 1px solid ; */
-    /* margin: 2px; */
     padding: 20px 0px 10px 0px;
 
   }
 
-/*Flash Notice*/
+/* Flash[:message] */
   h2 {
-    border-bottom: 2 solid #ff6666; */
     font-size: 10px;
-    /* line-height: 10px; */
+    line-height: 10px;
     margin-bottom: 10px;
     font-family: courier new;
     color: #ff6666;
   }
 
-  /* used in show page */
-  /*body - notes*/
+
   h3 {
     font-size: 20px;
     line-height: 30px;
@@ -57,14 +45,14 @@
     color: #1a0033;
   }
 
-/* edit/add new tab */
+
   h4 {
     font-size: 12px;
     font-family: arial;
     color: #1a0033;
   }
 
-/* ???Biggest */
+
   h5 {
     font-size: 36px;
     line-height: 36px;
@@ -74,7 +62,6 @@
   footer{
     margin-top: 30px;
     font-size: 12px;
-    font-samily:
   }
 
   p {
@@ -85,12 +72,10 @@
     margin-bottom: 2px;
   }
 
-
-
-
   a {
     color: #8f809a;
   }
+
   a:hover {
     color: #cdc6d2;
   }
@@ -101,15 +86,15 @@
 
   .content {
     float: left;
-    width: 60%; /* 480px / 800px */
+    width: 60%;
   }
 
   .sidebar {
     background: #eee;
     border: 1px solid #ccc;
     float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+    padding: 2.08333333333%;
+    width: 30%;
   }
 
   .sidebar ul {
@@ -122,9 +107,6 @@
 }
 
 
-
-
-/* Actual  Website CSS */
 @media screen and (max-width: 600px) {
   .wrapper {
     -moz-box-shadow: none;
@@ -144,6 +126,4 @@
     border-top: 2px solid #ccc;
     padding: 0;
   }
-
-
 }
