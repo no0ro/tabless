@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "password_security"
-    #3ENV["SESSION_SECRET"]
+    use Rack::Flash
 
   end
 
@@ -39,6 +39,8 @@ class ApplicationController < Sinatra::Base
     def redirect_to_welcome
       redirect to "/"
     end
+
+
   end
 
 end
