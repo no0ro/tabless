@@ -1,6 +1,4 @@
-<!-- <h5>Show Tab: </h5> -->
-
-<!-- Show -> Tab Deets -->
+<!-- Show - Tab Deets -->
 <h1> <%=@tab.name%> </h1>
 <%url = @tab.url%>
 <p><a href=<%=url%> target="_blank"> <%=url%> </a></p>
@@ -8,7 +6,7 @@
 <h3> * <%=@tab.notes%> </h3>
 <br></br>
 
-<!-- Edit -> Route -->
+<!-- Edit - Route -->
 <h4> > &nbsp; <a href='/tabs/ <%= @tab.id %> /edit' style="text-decoration:none"> Edit Tab </a></h4>
 <!-- Create -> Route -->
 <h4> > &nbsp; <a href="/tabs/new" style="text-decoration:none"> Add A New Tab</a></h4>

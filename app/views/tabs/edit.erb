@@ -1,6 +1,6 @@
 <h1>Edit <%=@tab.name%> Tab: </h1>
 
-<!-- Edit  -> Form -->
+<!-- Edit - Form -->
 <br></br>
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
@@ -16,12 +16,12 @@
   <h4><label for="notes">Notes:</label>
   <input type="text" name="notes" id="notes" value="<%=@tab.notes%>"></h4>
   <br></br>
-  <!-- <input type="submit" value="Submit"> -->
+
   <button type="submit" name="edit_button">Save Changes</button>
 </form>
 
 
-<!-- Delete -> Form/Button -->
+<!-- Delete - Form/Button -->
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">

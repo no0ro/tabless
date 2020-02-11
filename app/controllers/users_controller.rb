@@ -1,4 +1,3 @@
-# require 'rack-flash'
 class UsersController <  ApplicationController
 
 #-------------signup----------------#
@@ -42,15 +41,12 @@ class UsersController <  ApplicationController
     end
   end
 
-#grabs the user's info from the params hash,
-#looks to match that info against the existing entries in the user db
-# and, if a matching entry is found, signs the user in.
-  post '/login' do
-    # does this username exist in the db?
-    user = User.find_by(:name => params["name"]) #in name column, return params key, name's, value
 
-    if user && user.authenticate(params["password"]) # if pswd matches && if user exits in db
-      session[:user_id] = user.id # set session to this user
+  post '/login' do
+    user = User.find_by(:name => params["name"]) #in db name column, return params key, name's, value. find_by aka search by attribute
+
+    if user && user.authenticate(params["password"]) # if pswd matches && user match
+      session[:user_id] = user.id # set session to this user aka set session's key, user_id to equal the value of  the user's  id #
       redirect_to_homepage # go to '/tabs' route
     else
       flash[:message] = "Incorrect log in information. Please try again."
@@ -66,5 +62,5 @@ class UsersController <  ApplicationController
       redirect '/'
     end
   end
-  
+
 end
