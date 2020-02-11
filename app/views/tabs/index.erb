@@ -1,20 +1,21 @@
 <h1>Hey <%=@user.name%>! Check Out Your Tabs:</h1>
 <br>
 <br>
-<!-- Display ALL Tabs & Deets -->
 
+<!-- Display ALL Tabs & Deets -->
 <% @tabs.each do |tab| %>
   <a href="/tabs/<%=tab.id%>" >
     <h3><%=tab.name.upcase%></h3></a>
     <p><%=tab.url%></p>
-    <h4> || <%=tab.notes%></h4>
+    <h4> * <%=tab.notes%></h4>
   <br>
   <br>
 <% end %>
 
 <!-- Create a New tab -> Route -->
-<h4> > <a href="/tabs/new">Add a Tab</a></h4>
+<h4> > &nbsp;  <a href="/tabs/new">Add a Tab</a></h4>
 <br></br>
+
 <!-- Footer -->
 <footer>
   <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>
