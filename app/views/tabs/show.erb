@@ -1,28 +1,28 @@
-<h5>Show Tab: </h5>
+<!-- <h5>Show Tab: </h5> -->
 
 <!-- Show -> Tab Deets -->
-<h3> <%=@tab.name%> </h3>
-<h5> <%=@tab.notes%> </h5>
+<h1> <%=@tab.name%> </h1>
 <%url = @tab.url%>
 <p><a href=<%=url%> target="_blank"> <%=url%> </a></p>
-
+<br>
+<h3> ||  <%=@tab.notes%> </h3>
+<br></br>
 
 <!-- Edit -> Route -->
-<a href='/tabs/ <%= @tab.id %> /edit' > Edit This Tab </a>
-<br></br>
+<h4> > <a href='/tabs/ <%= @tab.id %> /edit' style="text-decoration:none"> Edit Tab </a></h4>
+<!-- Create -> Route -->
+<h4> > <a href="/tabs/new" style="text-decoration:none"> Add A New Tab</a></h4>
+
 
 <!-- Delete -> Form/Button -->
 <form action='/tabs/ <%=@tab.id%>' method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete">
+  <input type="submit" value="Delete Tab">
 </form>
 
 <br></br>
 
-<!-- Create -> Route -->
-<a href="/tabs/new">Add A New Tab</a>
-<br>
-</br>
+
 
 <!-- Footer -->
 <footer>

@@ -1,23 +1,20 @@
-<h1>Welcome, <%=@user.name%> ALL TABS</h1>
-
+<h1>Hey <%=@user.name%>! Check Out Your Tabs:</h1>
+<br>
+<br>
 <!-- Display ALL Tabs & Deets -->
-<ul>
-<% @tabs.each do |tab| %>
-  <a href="/tabs/<%=tab.id%>" style="text-decoration:none">
-    <h3><li><%=tab.name%></li></h3></a>
-    <h5><li> -> <%=tab.notes%></li></h5>
-    <p class="website_url"><li><%=tab.url%></li></p>
 
-  <%# <%url = tab.url%>
-  <!-- <p><li><a href=<%=url%> target="_blank"> <%=url%></a></li></p> -->
+<% @tabs.each do |tab| %>
+  <a href="/tabs/<%=tab.id%>" >
+    <h3><%=tab.name.upcase%></h3></a>
+    <p><%=tab.url%></p>
+    <h4> || <%=tab.notes%></h4>
+  <br>
   <br>
 <% end %>
-</ul>
 
 <!-- Create a New tab -> Route -->
-<br>
-<a href="/tabs/new">Add a Tab</a>
-
+<h4> > <a href="/tabs/new">Add a Tab</a></h4>
+<br></br>
 <!-- Footer -->
 <footer>
   <a href="/tabs">Home</a> ||  <a href="/logout">Log Out</a>

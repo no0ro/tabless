@@ -1,23 +1,23 @@
-<h5>Edit <%=@tab.name%>: </h5>
+<h1>Edit <%=@tab.name%> Tab: </h1>
 
 <!-- Edit  -> Form -->
 <br></br>
 <form action="/tabs/<%=@tab.id%>" method="post">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
 
-  <label for="tab_name">Name:</label>
-  <input type="text" id="tab_name" name="name" value="<%=@tab.name%>">
+  <h4><label for="tab_name">Name:</label>
+  <input type="text" id="tab_name" name="name" value="<%=@tab.name%>"></h4>
   <br></br>
 
-  <label for="url">URL:</label>
-  <input type="text" name="url" id="url" value="<%=@tab.url%>">
+  <h4><label for="url">URL:</label>
+  <input type="text" name="url" id="url" value="<%=@tab.url%>"></h4>
   <br></br>
 
-  <label for="notes">Notes:</label>
-  <input type="text" name="notes" id="notes" value="<%=@tab.notes%>">
+  <h4><label for="notes">Notes:</label>
+  <input type="text" name="notes" id="notes" value="<%=@tab.notes%>"></h4>
   <br></br>
   <!-- <input type="submit" value="Submit"> -->
-  <button type="submit" name="edit_button">Save Changed</button>
+  <button type="submit" name="edit_button">Save Changes</button>
 </form>
 
 
