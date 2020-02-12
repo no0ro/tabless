@@ -1,6 +1,6 @@
 # Tabless
 
-[TO DO] info
+The goal of this app is to have a temporary place to put open browser tabs. This app allows users to create an account, log in and out, create, update and delete tabs, and view a list of saved tabs.
 
 ## Installation & Usage
 
