@@ -26,17 +26,20 @@ class TabsController <  ApplicationController
 
       # 1) take user input & create a new tab
       tab = Tab.new(:name => params["tab_name"], :url => params["url"], :notes => params["notes"])
+      tab.user_id = current_user.id
 
-      category = Category.create(:name => params["name"])
-      binding.pry
+      tab.category = Category.create(:name => params["category_name"])
+      tab.save
+
+      #binding.pry
       # 2) assign the user's id #, to the tabs user_id key
       # aka associate the tab to the user
-      tab.user_id = current_user.id
+
       binding.pry
 
 
-      categories = current_user.categories 
-      tab.save
+    #  categories = current_user.categories
+
       redirect_to_homepage
     else
       redirect to '/'
