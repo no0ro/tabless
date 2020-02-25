@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
  validates :name, :email, :password_digest, presence: true
  has_many :tabs
  has_many :categories, through: :tabs
+ has_many :notes
 end

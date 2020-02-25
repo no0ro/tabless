@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
     def redirect_to_homepage
       redirect to "/tabs"
     end
+
+    def redirect_to_notes_homepage
+      redirect to "/notes"
+    end
   end
 
 end

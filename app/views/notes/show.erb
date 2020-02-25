@@ -1,0 +1,20 @@
+<h1>Delete Your Note</h1>
+<h3>Editing is Under Construction :)</h3>
+<br></br>
+
+<!-- Display -> Note-->
+<h4> * <%=@note.name%> </h4>
+<br></br>
+
+<!-- Delete -> Form/Button -->
+<form action='/notes/ <%=@note.id%>' method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Note">
+</form>
+
+<br></br>
+
+<!-- Footer -->
+<footer>
+  <a href="/notes">Notes Home</a> || <a href="/tabs">Tabs Home</a> || <a href="/logout">Log Out</a>
+</footer>

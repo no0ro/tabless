@@ -1,0 +1,17 @@
+<h1> Your Notes </h1>
+
+<% @notes.each_with_index do |note, index| %>
+  <h3><a href="/notes/<%=note.id%>"> <%=index%>.</a></h3>
+  <p><%= note.name %></p>
+  <br>
+  </br>
+<%end%>
+
+<!-- Create a New Note -> Route -->
+<h4> > &nbsp;  <a href="/notes/new">Add a Note</a></h4>
+<br></br>
+
+<!-- Footer -->
+<footer>
+  <a href="/notes">Notes Home</a> || <a href="/tabs">Tabs Home</a> || <a href="/logout">Log Out</a>
+</footer>
