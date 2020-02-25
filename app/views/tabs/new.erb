@@ -15,9 +15,20 @@
   <h4><label for="notes">Notes:</label>
   <input type="text" name="notes" id="notes" required></h4>
   <br>
+  <%if !@categories.empty? %>
+
+  <h4><label for="category_name">Choose an Existing Category:</label>
+  <input type="text" name="category_name" id="category_name"></h4>
+
+      <% @categories.each do |category|%>
+        <input type="hidden" id="hidden" name="tab[category_ids][]" value=" ">
+        <input type="checkbox" id="<%=category.id%>" name="tab[category_ids][]" value="<%= category.id %>"> <%=category.name%></input>
+      <%end %>
 
   <h4><label for="category_name">Add a Category:</label>
-  <input type="text" name="category_name" id="category_name" required></h4>
+  <input type="text" name="category_name" id="category_name"></h4>
+  <% else %>
+  <% end %>
   <br>
 
   <input type="submit" value="Submit">

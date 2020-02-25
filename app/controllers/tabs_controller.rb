@@ -14,6 +14,7 @@ class TabsController <  ApplicationController
   # new - renders new tab form IF user is logged in
   get '/tabs/new' do
     if logged_in?
+      @categories = current_user.categories
       erb :'/tabs/new'
     else
       redirect to '/'
@@ -24,22 +25,21 @@ class TabsController <  ApplicationController
   post '/tabs' do
     if logged_in?
 
-      # 1) take user input & create a new tab
       tab = Tab.new(:name => params["tab_name"], :url => params["url"], :notes => params["notes"])
       tab.user_id = current_user.id
 
-      tab.category = Category.create(:name => params["category_name"])
+      categories = current_user.categories
+
+      if !categories.empty?
+        tab.category_id = params["tab"]["category_ids"]
+      end
+
+      if !params["category_name"].empty? #AKA added a new category
+        tab.category = Category.create(:name => params["category_name"])
+      end
       tab.save
 
       #binding.pry
-      # 2) assign the user's id #, to the tabs user_id key
-      # aka associate the tab to the user
-
-      binding.pry
-
-
-    #  categories = current_user.categories
-
       redirect_to_homepage
     else
       redirect to '/'
