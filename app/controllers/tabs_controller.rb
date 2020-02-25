@@ -23,13 +23,19 @@ class TabsController <  ApplicationController
   # create
   post '/tabs' do
     if logged_in?
+
       # 1) take user input & create a new tab
       tab = Tab.new(:name => params["tab_name"], :url => params["url"], :notes => params["notes"])
 
+      category = Category.create(:name => params["name"])
+      binding.pry
       # 2) assign the user's id #, to the tabs user_id key
       # aka associate the tab to the user
       tab.user_id = current_user.id
+      binding.pry
 
+
+      categories = current_user.categories 
       tab.save
       redirect_to_homepage
     else
